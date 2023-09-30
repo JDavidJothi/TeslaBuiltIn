@@ -1,0 +1,75 @@
+SELECT ASCII('A');
+SELECT ASCII('ABC');
+SELECT ASCII('BC');
+
+SELECT CHAR(65);
+
+DECLARE @First INT
+SET @First = 65
+WHILE (@First <= 90)
+BEGIN
+	PRINT CHAR(@First)
+	SET @First = @First + 1
+END
+
+SELECT ASCII('a');
+
+DECLARE @Begining INT
+SET @Begining = 97
+WHILE (@Begining <= 122)
+BEGIN
+    PRINT CHAR(@Begining)
+	SET @Begining = @Begining + 1
+END
+
+SELECT ASCII('0');
+
+DECLARE @Begins INT
+SET @Begins = 48
+WHILE (@Begins <= 57)
+BEGIN
+	PRINT CHAR(@Begins)
+	SET @Begins = @Begins + 1
+END
+
+SELECT '              Ryder';
+SELECT LTRIM('           Ryder');
+
+CREATE TABLE tblEmployees6(ID INT,
+FirstName VARCHAR(100),MiddleName VARCHAR(100),
+LastName VARCHAR(100),Email VARCHAR(100),
+Gender VARCHAR(100),DepartmentId INT,Number INT);
+
+SELECT * FROM tblEmployees6;
+
+INSERT INTO tblEmployees6 VALUES(1,'  Sam','S','Sony','Sam@aaa.com','Male',1,1);
+INSERT INTO tblEmployees6 VALUES(2,'     Ram','R','Barber','Ram@aaa.com','Male',1,2);
+INSERT INTO tblEmployees6 VALUES(3,'   Sara','','Sanosky','Sara@aaa.com','Female',3,2);
+INSERT INTO tblEmployees6 VALUES(4,' Todd','','Gartner','Todd@bbb.com','Male',2,2);
+INSERT INTO tblEmployees6 VALUES(5,'  John','J','Grover','John@aaa.com','Male',3,1);
+INSERT INTO tblEmployees6 VALUES(6,'   Sana','S','Lenin','Sana@ccc.com','Female',2,3);
+INSERT INTO tblEmployees6 VALUES(7,'    James','J','Bond','James@bbb.com','Male',1,3);
+INSERT INTO tblEmployees6 VALUES(8,' Rob','R','Hunter','Rob@ccc.com','Male',2,2);
+INSERT INTO tblEmployees6 VALUES(9,' Steve','S','Wilson','Steve@aaa.com','Male',1,2);
+INSERT INTO tblEmployees6 VALUES(10,'   Pam','P','Broker','Pam@bbb.com','Female',2,1);
+
+SELECT LTRIM(FirstName) AS First_Name, MiddleName, LastName FROM tblEmployees6;
+
+SELECT RTRIM('      Ryder      ');
+
+SELECT LTRIM(FirstName) AS First_Name, 
+MiddleName, LastName, RTRIM(LTRIM(FirstName)) + ' ' + MiddleName + ' ' + LastName AS FullName
+FROM tblEmployees6;
+
+
+SELECT UPPER(LTRIM(FirstName)) AS First_Name, 
+MiddleName, LOWER(LastName) AS LastName, RTRIM(LTRIM(FirstName)) + ' ' + MiddleName + ' ' + LastName AS FullName
+FROM tblEmployees6;
+
+SELECT REVERSE(UPPER(LTRIM(FirstName))) AS First_Name, 
+MiddleName, LOWER(LastName) AS LastName, RTRIM(LTRIM(FirstName)) + ' ' + MiddleName + ' ' + LastName AS FullName
+FROM tblEmployees6;
+
+SELECT FirstName AS FIRSTNAME, LEN(FirstName) AS [Total Characters] FROM tblEmployees6;
+
+SELECT FirstName AS FIRSTNAME, LEN(LTRIM(FirstName)) AS [Total Characters] FROM tblEmployees6;
